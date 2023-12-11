@@ -9,7 +9,6 @@ RUN apt-get install gunicorn3 -y
 COPY requirements.txt requirements.txt
 
 COPY flaskapp /opt/
-WORKDIR /opt
 
 RUN pip install -r requirements.txt
 # Install extral packages
@@ -19,5 +18,6 @@ RUN python3 -m nltk.downloader punkt
 RUN python3 -m nltk.downloader wordnet
 
 #CMD ['gunicorn3', '-b', '0.0.0.0:8000', 'app:app','--workers=5']
+WORKDIR /opt
 CMD ['python3', '/opt/app.py']
 EXPOSE 8000
