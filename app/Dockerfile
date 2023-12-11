@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 MAINTAINER juanable.wang@gmail.com
 
 RUN apt-get update -y
