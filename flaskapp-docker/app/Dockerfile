@@ -19,5 +19,5 @@ RUN python3 -m nltk.downloader wordnet
 
 #CMD ['gunicorn3', '-b', '0.0.0.0:8000', 'app:app','--workers=5']
 WORKDIR /opt
-CMD ['python3', '/opt/app.py']
+CMD python3 /opt/app.py
 EXPOSE 8000
