@@ -15,6 +15,7 @@
   - [Data Cleaning](#cleaning)
   - [Training Classifier](#training)
   - [Starting the Web App](#starting)
+  - [AWS & Docker] (#deploying)
 - [Conclusion](#conclusion)
 - [Files](#files)
 - [Software Requirements](#sw)
@@ -38,57 +39,31 @@ This project will include a web app where an emergency worker can input a new me
 
 ## 2. Project Components
 
-There are three components of this project:
-
-<a id='etl_pipeline'></a>
-
 ### 2.1. ETL Pipeline
 
-File _data/process_data.py_ contains data cleaning pipeline that:
+File _data/process.py_ contains data cleaning pipeline that:
 
 - Loads the `messages` and `categories` dataset
-- Merges the two datasets
-- Cleans the data
+- Merges the `messages` and `categories` dataset
+- Cleans the data by NLTK
 - Stores it in a **SQLite database**
-
-<a id='ml_pipeline'></a>
 
 ### 2.2. ML Pipeline
 
 File _models/train_classifier.py_ contains machine learning pipeline that:
 
 - Loads data from the **SQLite database**
-- Splits the data into training and testing sets
-- Builds a text processing and machine learning pipeline
-- Trains and tunes a model using GridSearchCV
-- Outputs result on the test set
-- Exports the final model as a pickle file
-
-<a id='flask'></a>
+- Splits the data into training validation and testing sets
+- Builds a text processing and Transformer pipeline
+- Save the final model by torch
 
 ### 2.3. Flask Web App
 
-<a id='eg'></a>
 
 Running [this command](#com) **from app directory** will start the web app where users can enter their query, i.e., a request message sent during a natural disaster, e.g. _"Please, we need tents and water. We are in Silo, Thank you!"_.
 
-**_Screenshot 1_**
-
-![master](img/master.jpg)
-
-What the app will do is that it will classify the text message into categories so that appropriate relief agency can be reached out for help.
-
-**_Screenshot 2_**
-
-![results](img/res.jpg)
-
-<a id='run'></a>
 
 ## 3. Running
-
-There are three steps to get up and runnning with the web app if you want to start from ETL process.
-
-<a id='cleaning'></a>
 
 ### 3.1. Data Cleaning
 
@@ -155,6 +130,12 @@ This will start the web app and will direct you to a URL where you can enter mes
 ![web_app](img/web_app.jpg)
 
 <a id='conclusion'></a>
+
+### 3.4. Deploy on AWS
+Create Docker Image
+Upload to Docker Hub
+Create an EC2 instance 
+Pull repo and deploy
 
 ## 4. Conclusion
 
